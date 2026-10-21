@@ -492,3 +492,47 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
   .property-info { flex-direction: column; }
   .property-price { margin-top: 0; }
 }
+
+/* UrbanNest mobile navigation fix */
+@media (max-width: 768px) {
+  #menuToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10001;
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  #nav {
+    display: none;
+  }
+
+  #nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    background: #ffffff;
+    padding: 20px;
+    gap: 18px;
+    z-index: 10000;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  #nav.open a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    color: #123b2a;
+    text-decoration: none;
+  }
+}
