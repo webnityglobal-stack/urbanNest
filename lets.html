@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact UrbanNest Realty for residential, commercial and industrial property guidance.">
+  <title>Let's Talk | UrbanNest Realty</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* CONTACT PAGE */
+    .talk-hero {
+      background: #f5f4ef;
+      padding: 100px 7%;
+    }
+
+    .talk-hero-inner {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .talk-kicker {
+      color: #8d754e;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+    }
+
+    .talk-copy h1 {
+      color: #103f35;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin: 0 0 25px;
+    }
+
+    .talk-copy h1 em {
+      color: #bd9a60;
+      font-style: normal;
+    }
+
+    .talk-copy > p {
+      max-width: 540px;
+      color: #63736d;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .talk-points {
+      display: grid;
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .talk-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .talk-point-icon {
+      width: 43px;
+      height: 43px;
+      flex-shrink: 0;
+      border: 1px solid #d9c8a8;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #103f35;
+      font-size: 19px;
+    }
+
+    .talk-point strong {
+      display: block;
+      color: #103f35;
+      font-size: 15px;
+      margin: 2px 0 5px;
+    }
+
+    .talk-point span {
+      color: #728079;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .talk-form-card {
+      background: #fff;
+      padding: 38px;
+      border: 1px solid #e8e6df;
+      box-shadow: 0 20px 60px rgba(16, 63, 53, .07);
+    }
+
+    .talk-form-card h2 {
+      color: #103f35;
+      font-family: "Manrope", sans-serif;
+      font-size: 27px;
+      margin: 0 0 10px;
+    }
+
+    .talk-form-card > p {
+      color: #7b8780;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 27px;
+    }
+
+    .talk-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .talk-form label {
+      display: grid;
+      gap: 8px;
+      color: #31453d;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .talk-form input,
+    .talk-form select,
+    .talk-form textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 15px;
+      border: 1px solid #dedfd8;
+      border-radius: 3px;
+      background: #fff;
+      color: #203b32;
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .talk-form input:focus,
+    .talk-form select:focus,
+    .talk-form textarea:focus {
+      border-color: #103f35;
+    }
+
+    .talk-form textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .talk-submit {
+      border: 0;
+      background: #103f35;
+      color: #fff;
+      padding: 16px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+
+    .talk-submit:hover {
+      background: #1b594a;
+    }
+
+    .talk-note {
+      color: #87918b;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .talk-bottom {
+      padding: 70px 7%;
+      background: #fff;
+    }
+
+    .talk-bottom-inner {
+      max-width: 1250px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .talk-bottom h2 {
+      color: #103f35;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(26px, 3vw, 38px);
+      margin: 0 0 12px;
+    }
+
+    .talk-bottom p {
+      color: #728079;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .talk-properties-link {
+      display: inline-block;
+      padding: 16px 24px;
+      background: #d4b174;
+      color: #103f35;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* FOOTER — SAME DESIGN AS HOME PAGE */
+    .footer {
+      background: #0f1f1b;
+      color: #c5d4cf;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .footer .container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 32px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .8fr .85fr 1fr;
+      gap: 48px;
+      padding: 70px 0 52px;
+      align-items: start;
+    }
+
+    .footer-brand,
+    .footer-column {
+      min-width: 0;
+    }
+
+    .footer .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 24px;
+      text-decoration: none;
+    }
+
+    .footer .brand-logo {
+      max-width: 220px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .footer-about {
+      max-width: 390px;
+      color: #c5d4cf;
+      font-size: 15px;
+      line-height: 2;
+      margin: 0;
+    }
+
+    .footer-column h4 {
+      color: #e8c58d;
+      font-family: "Manrope", sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      margin: 4px 0 25px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 17px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+      color: #c5d4cf;
+      font-size: 15px;
+      line-height: 1.7;
+      text-decoration: none;
+      transition: color .25s ease, transform .25s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-contact a:hover {
+      color: #e8c58d;
+      transform: translateX(3px);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .footer-contact p {
+      color: #c5d4cf;
+      font-size: 14px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .footer-contact a.footer-whatsapp {
+      color: #f0cf91;
+    }
+
+    .footer-bottom {
+      min-height: 76px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding: 18px 0;
+      box-sizing: border-box;
+    }
+
+    .footer-bottom span {
+      color: #91aaa1;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 30px;
+      bottom: 28px;
+      z-index: 9999;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: #20ce70;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(0,0,0,.2);
+    }
+
+    @media (max-width: 1050px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 42px 35px;
+        padding: 55px 0 42px;
+      }
+
+      .talk-hero-inner {
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .talk-hero {
+        padding: 65px 22px;
+      }
+
+      .talk-hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .talk-form-card {
+        padding: 25px 20px;
+      }
+
+      .talk-bottom {
+        padding: 50px 22px;
+      }
+
+      .talk-bottom-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer .container {
+        padding: 0 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 42px 0 35px;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+        padding: 20px 0;
+      }
+
+      .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        right: 17px;
+        bottom: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SAME HEADER -->
+  <header class="header">
+    <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+      <img src="urbannest-logo.png" alt="UrbanNest Realty" class="brand-logo">
+    </a>
+
+    <button type="button" class="menu-toggle" id="menuToggle"
+      aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav">
+      ☰
+    </button>
+
+    <nav class="nav" id="nav">
+      <a href="index.html">Home</a>
+      <a href="properties.html">Properties</a>
+      <a href="expertise.html">Expertise</a>
+      <a href="location.html">Locations</a>
+      <a href="about.html">About us</a>
+      <a class="nav-cta" href="lets.html">Let's talk</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="talk-hero">
+      <div class="talk-hero-inner">
+        <div class="talk-copy">
+          <div class="talk-kicker">LET'S START A CONVERSATION</div>
+          <h1>Your next move<br>starts <em>here.</em></h1>
+          <p>
+            Whether you're looking for a home, a commercial address or an
+            investment opportunity, tell us what matters to you. We'll help
+            you explore your next steps.
+          </p>
+
+          <div class="talk-points">
+            <div class="talk-point">
+              <div class="talk-point-icon">⌂</div>
+              <div>
+                <strong>Tell us what you're looking for</strong>
+                <span>Share your preferred property type, location and budget.</span>
+              </div>
+            </div>
+
+            <div class="talk-point">
+              <div class="talk-point-icon">↗</div>
+              <div>
+                <strong>Get personalised guidance</strong>
+                <span>Explore suitable options with clear, relevant information.</span>
+              </div>
+            </div>
+
+            <div class="talk-point">
+              <div class="talk-point-icon">♡</div>
+              <div>
+                <strong>Make your next move confidently</strong>
+                <span>Start a conversation with the UrbanNest Realty team.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="talk-form-card">
+          <h2>Tell us about your plans.</h2>
+          <p>Fill in your details and prepare an enquiry to send to our team.</p>
+
+          <form class="talk-form" id="talkForm">
+            <label>
+              Full name
+              <input type="text" id="talkName" placeholder="Enter your full name" required>
+            </label>
+
+            <label>
+              Phone number
+              <input type="tel" id="talkPhone" placeholder="+91 98765 43210"
+                pattern="[0-9+() -]{8,18}" required>
+            </label>
+
+            <label>
+              Email address
+              <input type="email" id="talkEmail" placeholder="you@example.com">
+            </label>
+
+            <label>
+              Property type
+              <select id="talkType" required>
+                <option value="">Choose property type</option>
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Industrial</option>
+                <option>Investment consultation</option>
+              </select>
+            </label>
+
+            <label>
+              Preferred location
+              <input type="text" id="talkLocation" placeholder="e.g. Noida, Delhi, Gurugram">
+            </label>
+
+            <label>
+              Tell us more
+              <textarea id="talkMessage" placeholder="Your budget, requirements or questions..."></textarea>
+            </label>
+
+            <button type="submit" class="talk-submit">Prepare enquiry ↗</button>
+            <span class="talk-note">
+              Your enquiry will open in WhatsApp after you configure your business number in the script below.
+            </span>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="talk-bottom">
+      <div class="talk-bottom-inner">
+        <div>
+          <h2>Ready to explore your options?</h2>
+          <p>Discover homes, commercial spaces and more with UrbanNest Realty.</p>
+        </div>
+        <a href="properties.html" class="talk-properties-link">Explore properties ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- SAME FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+            <img src="urbannest-logo.png" alt="UrbanNest Realty" class="brand-logo">
+          </a>
+          <p class="footer-about">
+            A considered approach to property discovery.
+            Explore homes, business spaces and investment opportunities
+            with a focus on your goals and requirements.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore</h4>
+          <div class="footer-links">
+            <a href="index.html#home">Home</a>
+            <a href="properties.html">All Properties</a>
+            <a href="expertise.html">Our Expertise</a>
+            <a href="location.html">Locations</a>
+            <a href="about.html">About Us</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Property Types</h4>
+          <div class="footer-links">
+            <a href="properties.html">Residential</a>
+            <a href="properties.html">Commercial</a>
+            <a href="properties.html">Industrial</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Get In Touch</h4>
+          <div class="footer-contact">
+            <p>Property enquiries and personalised assistance.</p>
+            <a href="#" id="footerWhatsApp" class="footer-whatsapp"
+              target="_blank" rel="noopener noreferrer">
+              Message us on WhatsApp ↗
+            </a>
+            <a href="lets.html">Let's talk</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> UrbanNest Realty. All rights reserved.</span>
+        <span>Property decisions deserve thoughtful guidance.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" id="whatsappFloat" href="#"
+    aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+    ✆
+  </a>
+
+  <script src="script.js" defer></script>
+
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    /*
+      IMPORTANT:
+      Replace the placeholder below with your WhatsApp business number.
+      Use country code + number only, without +, spaces or dashes.
+      Example format for India: 91XXXXXXXXXX
+    */
+    const WHATSAPP_NUMBER = "91YOURNUMBER";
+
+    function openWhatsApp(message) {
+      if (!/^91\d{10}$/.test(WHATSAPP_NUMBER)) {
+        alert("Please add your actual WhatsApp business number in lets-talk.html first.");
+        return;
+      }
+
+      const url = "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    document.getElementById("talkForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("talkName").value.trim();
+      const phone = document.getElementById("talkPhone").value.trim();
+      const email = document.getElementById("talkEmail").value.trim();
+      const type = document.getElementById("talkType").value;
+      const location = document.getElementById("talkLocation").value.trim();
+      const details = document.getElementById("talkMessage").value.trim();
+
+      const message =
+        "Hello UrbanNest Realty, I would like to make a property enquiry.\n\n" +
+        "Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Email: " + (email || "Not provided") + "\n" +
+        "Property Type: " + type + "\n" +
+        "Preferred Location: " + (location || "Not specified") + "\n" +
+        "Requirements: " + (details || "Not specified");
+
+      openWhatsApp(message);
+    });
+
+    document.getElementById("whatsappFloat").addEventListener("click", function (event) {
+      event.preventDefault();
+      openWhatsApp("Hello UrbanNest Realty, I would like to enquire about your properties.");
+    });
+
+    document.getElementById("footerWhatsApp").addEventListener("click", function (event) {
+      event.preventDefault();
+      openWhatsApp("Hello UrbanNest Realty, I would like to discuss a property enquiry.");
+    });
+  </script>
+</body>
+</html>

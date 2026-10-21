@@ -795,4 +795,60 @@ h1 em, h2 em { color: var(--gold); font-style: normal; }
   }
 }
 
+/* Explore Properties Button Color */
+
+/* Index page - Explore Properties button color */
+body:has(.hero) .hero a[href*="properties.html"],
+body:has(.hero) .hero .btn-primary {
+  background-color: #d0ad70 !important;
+  color: #0b3d32 !important;
+  border-color: #d0ad70 !important;
+}
+
+body:has(.hero) .hero a[href*="properties.html"]:hover,
+body:has(.hero) .hero .btn-primary:hover {
+  background-color: #0b3d32 !important;
+  color: #ffffff !important;
+  border-color: #0b3d32 !important;
+}
+
+/* Explore Properties button - same size */
+.hero a[href="properties.html"],
+.hero .btn-primary {
+  display: inline-flex !important;
+  width: 246px !important;
+  min-height: 64px !important;
+  padding: 18px 30px !important;
+  box-sizing: border-box !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  white-space: nowrap !important;
+  border-radius: 5px !important;
+}
+
+/* INDEX PAGE - Explore Properties button size fix */
+a[href="properties.html"].btn-primary,
+a[href="properties.html"] {
+  box-sizing: border-box !important;
+}
+
+
+  #filterBar .filter-btn:hover {
+    background-color: transparent !important;
+    color: inherit !important;
+    border-color: #d9d8d0 !important;
+  }
+
+  #filterBar .filter-btn.active,
+  #filterBar .filter-btn.active:hover {
+    background-color: #10483e !important;
+    color: #ffffff !important;
+    border-color: #10483e !important;
+  }
+
+
+
+
 
