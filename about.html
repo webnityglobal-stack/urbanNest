@@ -773,6 +773,58 @@
         flex-direction: column;
       }
     }
+    
+/* FINAL FIX: Expertise page oversized logo */
+header.header > a.brand {
+  width: 210px !important;
+  min-width: 210px !important;
+  max-width: 210px !important;
+  height: 70px !important;
+  min-height: 70px !important;
+  max-height: 70px !important;
+  display: flex !important;
+  flex: 0 0 210px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+header.header > a.brand > img.brand-logo {
+  width: 210px !important;
+  min-width: 0 !important;
+  max-width: 210px !important;
+  height: 70px !important;
+  min-height: 0 !important;
+  max-height: 70px !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  header.header > a.brand {
+    width: 155px !important;
+    min-width: 155px !important;
+    max-width: 155px !important;
+    height: 52px !important;
+    max-height: 52px !important;
+    flex-basis: 155px !important;
+  }
+
+  header.header > a.brand > img.brand-logo {
+    width: 155px !important;
+    max-width: 155px !important;
+    height: 52px !important;
+    max-height: 52px !important;
+  }
+}
+
   </style>
 </head>
 
@@ -780,13 +832,9 @@
 
   <!-- NAVBAR -->
   <header class="header">
-    <a href="index.html#home" class="brand" aria-label="UrbanNest Realty home">
-      <span class="brand-symbol">U<span>N</span></span>
-      <span class="brand-name">
-        URBANNEST
-        <small>REALTY &amp; ADVISORY</small>
-      </span>
-    </a>
+  <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+  <img src="urbannest-logo.png" alt="UrbanNest Realty " class="brand-logo">
+</a>
 
     <button class="menu-toggle" id="menuToggle"
       aria-label="Toggle navigation"
@@ -1073,13 +1121,9 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="index.html#home" class="brand">
-            <span class="brand-symbol" style="color:#fff;">U<span>N</span></span>
-            <span class="brand-name">
-              URBANNEST
-              <small>REALTY &amp; ADVISORY</small>
-            </span>
-          </a>
+           <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+  <img src="urbannest-logo.png" alt="UrbanNest Realty " class="brand-logo">
+</a>
 
           <p class="footer-about">
             Thoughtful real estate guidance to help you explore properties,

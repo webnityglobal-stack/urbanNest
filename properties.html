@@ -1427,6 +1427,154 @@
         transition-duration: .01ms !important;
       }
     }
+    
+/* FIX: Properties page heading layout */
+.search-section .section-heading {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 25px !important;
+  padding: 0 !important;
+}
+
+.search-section .section-heading h2 {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+
+.search-section .section-heading p {
+  display: block !important;
+  width: 100% !important;
+  max-width: 650px !important;
+  margin: 12px 0 0 !important;
+  line-height: 1.8 !important;
+}
+
+.search-section .container {
+  width: min(1240px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  .search-section .container {
+    width: calc(100% - 32px);
+  }
+
+  .search-section .section-heading h2 {
+    font-size: 29px;
+    letter-spacing: -1px;
+  }
+}
+
+/* FORCE FIX: Properties search heading width */
+.search-section {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.search-section > .container {
+  display: block !important;
+  width: min(1240px, calc(100% - 48px)) !important;
+  max-width: 1240px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+.search-section .section-heading {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 0 28px !important;
+  padding: 0 !important;
+  float: none !important;
+  box-sizing: border-box !important;
+}
+
+.search-section .section-heading .section-kicker {
+  display: block !important;
+  width: 100% !important;
+}
+
+.search-section .section-heading h2 {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  writing-mode: horizontal-tb !important;
+  margin: 0 !important;
+  font-size: clamp(30px, 3vw, 42px) !important;
+  line-height: 1.2 !important;
+  box-sizing: border-box !important;
+}
+
+.search-section .section-heading p {
+  display: block !important;
+  width: 100% !important;
+  max-width: 650px !important;
+  margin: 14px 0 0 !important;
+  line-height: 1.8 !important;
+}
+
+@media (max-width: 600px) {
+  .search-section > .container {
+    width: calc(100% - 32px) !important;
+  }
+}
+
+/* FIX: Stop MAKE YOUR MOVE from overlapping upper section */
+.search-section {
+  position: relative !important;
+  z-index: 2 !important;
+  clear: both !important;
+  margin-top: 0 !important;
+  padding-top: 65px !important;
+  overflow: visible !important;
+}
+
+.search-section .section-heading {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  margin: 0 0 28px !important;
+  transform: none !important;
+}
+
+.search-section .section-heading .section-kicker {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  display: block !important;
+  margin: 0 0 8px !important;
+  padding: 0 !important;
+  float: none !important;
+  z-index: 1 !important;
+}
+
+.search-section .section-heading h2,
+.search-section .section-heading p {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  float: none !important;
+  margin-left: 0 !important;
+}
+
   </style>
 </head>
 
@@ -1434,13 +1582,9 @@
 
   <!-- NAVBAR: SAME URBANNEST BRANDING -->
   <header class="header">
-    <a href="index.html#home" class="brand" aria-label="UrbanNest Realty homepage">
-      <span class="brand-symbol">U<span>N</span></span>
-      <span class="brand-name">
-        URBANNEST
-        <small>REALTY &amp; ADVISORY</small>
-      </span>
-    </a>
+ <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+  <img src="urbannest-logo.png" alt="UrbanNest Realty " class="brand-logo">
+</a>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
       ☰
@@ -2041,13 +2185,9 @@
       <div class="footer-grid">
 
         <div>
-          <a href="index.html#home" class="brand">
-            <span class="brand-symbol">U<span>N</span></span>
-            <span class="brand-name">
-              URBANNEST
-              <small>REALTY &amp; ADVISORY</small>
-            </span>
-          </a>
+          <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+  <img src="urbannest-logo.png" alt="UrbanNest Realty " class="brand-logo">
+</a>
 
           <p class="footer-about">
             A considered approach to property discovery. Explore homes,

@@ -719,6 +719,92 @@
         font-size: 13px;
       }
     }
+    
+/* FINAL FIX: Expertise page oversized logo */
+header.header > a.brand {
+  width: 210px !important;
+  min-width: 210px !important;
+  max-width: 210px !important;
+  height: 70px !important;
+  min-height: 70px !important;
+  max-height: 70px !important;
+  display: flex !important;
+  flex: 0 0 210px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+header.header > a.brand > img.brand-logo {
+  width: 210px !important;
+  min-width: 0 !important;
+  max-width: 210px !important;
+  height: 70px !important;
+  min-height: 0 !important;
+  max-height: 70px !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  header.header > a.brand {
+    width: 155px !important;
+    min-width: 155px !important;
+    max-width: 155px !important;
+    height: 52px !important;
+    max-height: 52px !important;
+    flex-basis: 155px !important;
+  }
+
+  header.header > a.brand > img.brand-logo {
+    width: 155px !important;
+    max-width: 155px !important;
+    height: 52px !important;
+    max-height: 52px !important;
+  }
+}
+
+/* Fix oversized logo/image outside the header */
+img.brand-logo {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Header logo */
+.header img.brand-logo {
+  width: 210px !important;
+  height: 70px !important;
+  max-width: 210px !important;
+  max-height: 70px !important;
+  object-fit: contain !important;
+}
+
+/* Footer logo */
+.footer img.brand-logo {
+  width: 210px !important;
+  height: auto !important;
+  max-width: 210px !important;
+  max-height: 80px !important;
+  object-fit: contain !important;
+}
+
+/* Prevent image from overflowing footer */
+.footer {
+  overflow: hidden;
+}
+
+.footer img {
+  max-width: 100%;
+}
+
+
   </style>
 </head>
 
@@ -726,13 +812,9 @@
 
   <!-- HEADER: SAME NAVBAR STYLE AS index.html -->
   <header class="header">
-    <a href="index.html#home" class="brand" aria-label="UrbanNest Realty home">
-      <span class="brand-symbol">U<span>N</span></span>
-      <span class="brand-name">
-        URBANNEST
-        <small>REALTY &amp; ADVISORY</small>
-      </span>
-    </a>
+ <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+  <img src="urbannest-logo.png" alt="UrbanNest Realty " class="brand-logo">
+</a>
 
     <button
       class="menu-toggle"
@@ -986,13 +1068,9 @@
   <footer class="footer">
     <div class="footer-top">
       <div>
-        <a href="index.html#home" class="brand">
-          <span class="brand-symbol" style="color:white;">U<span>N</span></span>
-          <span class="brand-name">
-            URBANNEST
-            <small>REALTY &amp; ADVISORY</small>
-          </span>
-        </a>
+         <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+  <img src="urbannest-logo.png" alt="UrbanNest Realty " class="brand-logo">
+</a>
         <p class="footer-description">
           Thoughtful real estate guidance for residential, commercial and
           investment property journeys.
