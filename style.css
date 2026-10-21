@@ -847,8 +847,27 @@ a[href="properties.html"] {
     color: #ffffff !important;
     border-color: #10483e !important;
   }
+/* Navbar Let's Talk text black */
+nav a[href="lets-talk.html"],
+nav a[href="./lets-talk.html"] {
+    color: #000 !important;
+}
+nav a[href="lets-talk.html"]:hover,
+nav a[href="./lets-talk.html"]:hover {
+    color: #000 !important;
+}
 
-
-
+/* Fix Let's Talk visibility on mobile */
+@media (max-width: 768px) {
+  nav a[href="lets-talk.html"],
+  nav a[href="./lets-talk.html"] {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #000 !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+}
 
 
