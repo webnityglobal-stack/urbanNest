@@ -1,0 +1,1209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Greater Noida West Properties | UrbanNest Realty</title>
+  <meta name="description" content="Explore flats, apartments, residential properties and investment opportunities in Greater Noida West with UrbanNest Realty.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #123b2b;
+      --green-dark: #09271c;
+      --gold: #c5a46d;
+      --cream: #f7f5ef;
+      --text: #24342c;
+      --muted: #69736c;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    /* SAME NAVBAR STYLE AS index.html */
+    .header {
+      height: 88px;
+      width: 100%;
+      padding: 0 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 20px rgba(0,0,0,.045);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-symbol {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -3px;
+    }
+
+    .brand-symbol span {
+      color: var(--gold);
+    }
+
+    .brand-name {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 1.5px;
+      line-height: 1.3;
+    }
+
+    .brand-name small {
+      display: block;
+      color: #8a795c;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 31px;
+    }
+
+    .nav > a {
+      font-size: 13px;
+      font-weight: 600;
+      color: #34463b;
+      transition: color .25s ease;
+    }
+
+    .nav > a:hover,
+    .nav > a.active {
+      color: #b18b4f;
+    }
+
+    .nav .nav-cta {
+      padding: 13px 20px;
+      color: #fff;
+      background: var(--green);
+    }
+
+    .nav .nav-cta:hover {
+      color: #fff;
+      background: #20543d;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--green);
+      font-size: 29px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 520px;
+      padding: 90px 7%;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(7,35,24,.94), rgba(7,35,24,.58)),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85")
+        center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 5.5vw, 72px);
+      font-weight: 500;
+      line-height: 1.12;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero p {
+      max-width: 610px;
+      color: #e1e7e2;
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      min-height: 49px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 23px;
+      background: var(--gold);
+      color: var(--green-dark);
+      border: 1px solid var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      transition: .25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 85px 7% 50px;
+      text-align: center;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section-label {
+      color: #a3824e;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .intro h2,
+    .section-heading h2 {
+      font-family: "Playfair Display", serif;
+      color: var(--green);
+      font-size: clamp(33px, 4vw, 48px);
+      line-height: 1.2;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .intro p,
+    .section-heading p {
+      max-width: 750px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    /* SEARCH */
+    .search-section {
+      padding: 0 7% 65px;
+    }
+
+    .search-panel {
+      background: var(--cream);
+      border: 1px solid #e9e5da;
+      padding: 25px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr auto;
+      align-items: end;
+      gap: 17px;
+    }
+
+    .field label {
+      display: block;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      height: 47px;
+      border: 1px solid #deded4;
+      background: #fff;
+      padding: 0 12px;
+      color: var(--text);
+      outline: none;
+      font-size: 12px;
+      border-radius: 0;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--gold);
+    }
+
+    .search-button {
+      height: 47px;
+      border: 0;
+      padding: 0 25px;
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .search-button:hover {
+      background: #20543d;
+    }
+
+    /* LOCATION CARDS */
+    .locations-section {
+      background: var(--cream);
+      padding: 75px 7% 95px;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 40px;
+    }
+
+    .location-count {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 25px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .location-card {
+      background: #fff;
+      border: 1px solid #e9e6dc;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .location-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(15,49,34,.10);
+    }
+
+    .location-image {
+      height: 235px;
+      position: relative;
+      overflow: hidden;
+      background: #e7e8e1;
+    }
+
+    .location-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .location-card:hover .location-image img {
+      transform: scale(1.06);
+    }
+
+    .location-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 7px 11px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    .location-content {
+      padding: 25px;
+    }
+
+    .location-type {
+      color: #a3824e;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .location-content h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--green);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .location-content p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+      margin-bottom: 19px;
+    }
+
+    .location-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding-top: 17px;
+      border-top: 1px solid #eeeae1;
+    }
+
+    .property-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .location-link {
+      color: #9b7945;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .location-link:hover {
+      color: var(--green);
+    }
+
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 45px 15px;
+      color: var(--muted);
+      background: #fff;
+      margin-top: 20px;
+    }
+
+    /* LOCALITY HIGHLIGHTS */
+    .highlights {
+      padding: 85px 7%;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 40px;
+    }
+
+    .highlight-card {
+      border: 1px solid #e9e5da;
+      padding: 27px;
+      background: #fff;
+    }
+
+    .highlight-icon {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      color: #a3824e;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .highlight-card h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--green);
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .highlight-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    /* CTA */
+    .contact-cta {
+      padding: 80px 7%;
+      text-align: center;
+      background: #f0ede4;
+    }
+
+    .contact-cta h2 {
+      font-family: "Playfair Display", serif;
+      color: var(--green);
+      font-size: clamp(32px, 4vw, 47px);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .contact-cta p {
+      max-width: 620px;
+      margin: 0 auto 27px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .contact-cta .btn:hover {
+      color: var(--green);
+      border-color: var(--green);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--green-dark);
+      color: #fff;
+      padding: 55px 7% 25px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 40px;
+    }
+
+    .footer .brand-name {
+      color: #fff;
+    }
+
+    .footer-description {
+      max-width: 350px;
+      color: #bfcfc4;
+      font-size: 13px;
+      line-height: 1.9;
+      margin-top: 20px;
+    }
+
+    .footer h4 {
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      color: var(--gold);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: #d0d9d2;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.14);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: #bfcfc4;
+      font-size: 11px;
+    }
+
+    @media (max-width: 1050px) {
+      .header {
+        padding: 0 4%;
+      }
+
+      .nav {
+        gap: 17px;
+      }
+
+      .nav > a {
+        font-size: 12px;
+      }
+
+      .location-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .search-section,
+      .locations-section,
+      .intro,
+      .hero,
+      .highlights {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header {
+        height: 76px;
+        padding: 0 5%;
+      }
+
+      .brand-symbol {
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+      }
+
+      .brand-name {
+        font-size: 14px;
+      }
+
+      .brand-name small {
+        font-size: 8px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        padding: 20px 5% 25px;
+        background: #fff;
+        box-shadow: 0 15px 20px rgba(0,0,0,.08);
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav > a {
+        padding: 13px 0;
+        border-bottom: 1px solid #eeeae1;
+        font-size: 14px;
+      }
+
+      .nav .nav-cta {
+        margin-top: 14px;
+        text-align: center;
+        padding: 13px 18px;
+      }
+
+      .hero {
+        min-height: 430px;
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .intro {
+        padding-top: 65px;
+      }
+
+      .search-panel {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .search-button {
+        width: 100%;
+      }
+
+      .location-grid,
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-image {
+        height: 240px;
+      }
+
+      .locations-section,
+      .highlights {
+        padding-top: 60px;
+        padding-bottom: 65px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .location-count {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header">
+    <a href="index.html#home" class="brand" aria-label="UrbanNest Realty home">
+      <span class="brand-symbol">U<span>N</span></span>
+      <span class="brand-name">
+        URBANNEST
+        <small>REALTY &amp; ADVISORY</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="nav"
+    >☰</button>
+
+    <nav class="nav" id="nav">
+      <a href="index.html">Home</a>
+      <a href="properties.html">Properties</a>
+      <a href="expertise.html">Expertise</a>
+      <a href="locations.html" class="active">Locations</a>
+      <a href="about.html">About us</a>
+      <a class="nav-cta" href="index.html#contact">Let's talk ↗</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Greater Noida West · Uttar Pradesh</div>
+
+        <h1>Find Your Place in<br><span>Greater Noida West.</span></h1>
+
+        <p>
+          Explore residential property options across Greater Noida West,
+          including popular localities such as Techzone 4, Gaur City,
+          Sector 1 and nearby neighbourhoods.
+          Find a location that fits your lifestyle and budget.
+        </p>
+
+        <a href="#locations" class="btn">
+          Explore Localities <span>↘</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro">
+      <div class="section-label">Our Focus Location</div>
+
+      <h2>Greater Noida West Real Estate</h2>
+
+      <p>
+        Greater Noida West, also known as Noida Extension, offers a variety
+        of residential communities, apartments and developing neighbourhoods.
+        Explore the areas below and contact UrbanNest Realty to discuss
+        your preferred locality and property requirements.
+      </p>
+    </section>
+
+    <!-- SEARCH -->
+    <section class="search-section">
+      <form class="search-panel" id="locationSearch">
+
+        <div class="field">
+          <label for="searchLocation">Search Locality</label>
+          <input
+            type="search"
+            id="searchLocation"
+            placeholder="e.g. Gaur City, Techzone 4..."
+          >
+        </div>
+
+        <div class="field">
+          <label for="propertyType">Property Type</label>
+          <select id="propertyType">
+            <option value="all">All Property Types</option>
+            <option value="apartment">Apartments &amp; Flats</option>
+            <option value="residential">Residential Communities</option>
+            <option value="investment">Investment Areas</option>
+          </select>
+        </div>
+
+        <button class="search-button" type="submit">Search ↗</button>
+
+      </form>
+    </section>
+
+    <!-- LOCALITY CARDS -->
+    <section class="locations-section" id="locations">
+
+      <div class="section-heading">
+        <div class="section-label">Explore The Neighbourhood</div>
+        <h2>Popular Areas in Greater Noida West</h2>
+        <p>
+          Browse locality highlights to begin your property search.
+          These are area guides, not live property listings.
+          Property availability and prices should be confirmed separately.
+        </p>
+      </div>
+
+      <div class="location-count">
+        <span id="resultCount">6 localities</span>
+        <span>Greater Noida West, Uttar Pradesh</span>
+      </div>
+
+      <div class="location-grid" id="locationGrid">
+
+        <!-- CARD 1 -->
+        <article class="location-card"
+          data-name="gaur city gaur city 1 gaur city 2"
+          data-type="residential">
+
+          <div class="location-image">
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
+              alt="Modern residential property"
+              loading="lazy">
+            <span class="location-tag">Residential</span>
+          </div>
+
+          <div class="location-content">
+            <div class="location-type">Popular Residential Area</div>
+            <h3>Gaur City</h3>
+            <p>
+              Explore apartments and residential communities around the
+              Gaur City area. Compare property layouts, facilities,
+              connectivity and your preferred budget.
+            </p>
+
+            <div class="location-footer">
+              <span class="property-label">Flats &amp; Apartments</span>
+              <a class="location-link" href="index.html#contact"
+                data-locality="Gaur City">Enquire ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="location-card"
+          data-name="techzone 4 techzone iv"
+          data-type="apartment">
+
+          <div class="location-image">
+            <img
+              src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85"
+              alt="Contemporary apartment interior"
+              loading="lazy">
+            <span class="location-tag">Apartments</span>
+          </div>
+
+          <div class="location-content">
+            <div class="location-type">Residential Locality</div>
+            <h3>Techzone 4</h3>
+            <p>
+              Explore apartment options in and around Techzone 4.
+              Check individual project details, access routes,
+              amenities and availability before making a decision.
+            </p>
+
+            <div class="location-footer">
+              <span class="property-label">Residential Flats</span>
+              <a class="location-link" href="index.html#contact"
+                data-locality="Techzone 4">Enquire ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="location-card"
+          data-name="sector 1 greater noida west"
+          data-type="apartment">
+
+          <div class="location-image">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85"
+              alt="Modern house exterior"
+              loading="lazy">
+            <span class="location-tag">Residential</span>
+          </div>
+
+          <div class="location-content">
+            <div class="location-type">Greater Noida West</div>
+            <h3>Sector 1</h3>
+            <p>
+              Consider apartments and residential projects in Sector 1.
+              Compare the specific project's location, possession details,
+              facilities and total cost.
+            </p>
+
+            <div class="location-footer">
+              <span class="property-label">Apartments &amp; Homes</span>
+              <a class="location-link" href="index.html#contact"
+                data-locality="Sector 1, Greater Noida West">Enquire ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="location-card"
+          data-name="bisrakh bisrakh jalalpur"
+          data-type="residential">
+
+          <div class="location-image">
+            <img
+              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+              alt="Contemporary residential architecture"
+              loading="lazy">
+            <span class="location-tag">Neighbourhood</span>
+          </div>
+
+          <div class="location-content">
+            <div class="location-type">Locality Guide</div>
+            <h3>Bisrakh</h3>
+            <p>
+              Explore residential options in and around Bisrakh.
+              Check road access, nearby services, project approvals
+              and the exact location of any property you consider.
+            </p>
+
+            <div class="location-footer">
+              <span class="property-label">Residential Options</span>
+              <a class="location-link" href="index.html#contact"
+                data-locality="Bisrakh">Enquire ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="location-card"
+          data-name="ecotech 12 ecotech xii"
+          data-type="investment">
+
+          <div class="location-image">
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85"
+              alt="Modern urban buildings"
+              loading="lazy">
+            <span class="location-tag">Area Research</span>
+          </div>
+
+          <div class="location-content">
+            <div class="location-type">Property Research</div>
+            <h3>Ecotech 12</h3>
+            <p>
+              If you are considering this area, verify the specific
+              property's land use, permitted activity, project status
+              and suitability for your intended purpose.
+            </p>
+
+            <div class="location-footer">
+              <span class="property-label">Area Enquiry</span>
+              <a class="location-link" href="index.html#contact"
+                data-locality="Ecotech 12">Enquire ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="location-card"
+          data-name="greater noida west nearby localities"
+          data-type="residential">
+
+          <div class="location-image">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+              alt="Well-designed modern home interior"
+              loading="lazy">
+            <span class="location-tag">Explore Nearby</span>
+          </div>
+
+          <div class="location-content">
+            <div class="location-type">Nearby Areas</div>
+            <h3>Nearby Localities</h3>
+            <p>
+              Tell us your preferred location near Greater Noida West.
+              We can help you organise your search around the area,
+              budget and property type you specify.
+            </p>
+
+            <div class="location-footer">
+              <span class="property-label">Custom Search</span>
+              <a class="location-link" href="index.html#contact"
+                data-locality="Nearby Greater Noida West">Enquire ↗</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="no-results" id="noResults">
+        <h3>No matching localities found</h3>
+        <p>Try another locality name or select a different property type.</p>
+      </div>
+
+    </section>
+
+    <!-- LOCATION BENEFITS -->
+    <section class="highlights">
+      <div class="section-heading">
+        <div class="section-label">Before You Choose</div>
+        <h2>What to Check Before Buying</h2>
+        <p>
+          Evaluate the individual property and its surroundings before
+          deciding. The details can vary from one project to another.
+        </p>
+      </div>
+
+      <div class="highlight-grid">
+
+        <article class="highlight-card">
+          <div class="highlight-icon">⌖</div>
+          <h3>Location &amp; Connectivity</h3>
+          <p>
+            Check actual travel routes, road access, commute times
+            and proximity to places you regularly visit.
+          </p>
+        </article>
+
+        <article class="highlight-card">
+          <div class="highlight-icon">⌂</div>
+          <h3>Project Details</h3>
+          <p>
+            Verify the developer, approvals, possession status,
+            maintenance charges and other project-specific information.
+          </p>
+        </article>
+
+        <article class="highlight-card">
+          <div class="highlight-icon">₹</div>
+          <h3>Budget &amp; Costs</h3>
+          <p>
+            Compare the total cost, applicable taxes, registration,
+            maintenance and any additional charges before committing.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="contact-cta">
+      <div class="section-label">UrbanNest Realty</div>
+      <h2>Looking for a Property in Greater Noida West?</h2>
+      <p>
+        Share your budget, preferred locality and property requirements.
+        Contact our team to discuss your search and the next steps.
+      </p>
+      <a href="index.html#contact" class="btn">
+        Discuss Your Requirements <span>↗</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+
+      <div>
+        <a href="index.html#home" class="brand">
+          <span class="brand-symbol" style="color:white;">U<span>N</span></span>
+          <span class="brand-name">
+            URBANNEST
+            <small>REALTY &amp; ADVISORY</small>
+          </span>
+        </a>
+
+        <p class="footer-description">
+          Thoughtful real estate guidance for residential, commercial
+          and investment property journeys.
+        </p>
+      </div>
+
+      <div>
+        <h4>QUICK LINKS</h4>
+        <div class="footer-links">
+          <a href="index.html#home">Home</a>
+          <a href="properties.html">Properties</a>
+          <a href="expertise.html">Expertise</a>
+          <a href="locations.html">Locations</a>
+          <a href="index.html#about">About Us</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>GET IN TOUCH</h4>
+        <div class="footer-links">
+          <a href="index.html#contact">Property Enquiry</a>
+          <a href="index.html#contact">Location Enquiry</a>
+          <a href="index.html#contact">Contact Our Team</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> UrbanNest Realty &amp; Advisory. All rights reserved.</p>
+      <p>Find your place. Move forward with confidence.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navbar
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("nav");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = nav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Locality search and property type filter
+    const searchForm = document.getElementById("locationSearch");
+    const searchInput = document.getElementById("searchLocation");
+    const typeSelect = document.getElementById("propertyType");
+    const locationGrid = document.getElementById("locationGrid");
+    const noResults = document.getElementById("noResults");
+    const resultCount = document.getElementById("resultCount");
+
+    const cards = Array.from(
+      locationGrid.querySelectorAll(".location-card")
+    );
+
+    function filterLocations(event) {
+      if (event) event.preventDefault();
+
+      const query = searchInput.value.trim().toLowerCase();
+      const selectedType = typeSelect.value;
+      let visibleCount = 0;
+
+      cards.forEach(function (card) {
+        const name = card.dataset.name.toLowerCase();
+        const type = card.dataset.type;
+
+        const matchesName = name.includes(query);
+        const matchesType =
+          selectedType === "all" || selectedType === type;
+
+        const visible = matchesName && matchesType;
+
+        card.style.display = visible ? "" : "none";
+
+        if (visible) visibleCount++;
+      });
+
+      resultCount.textContent =
+        visibleCount +
+        (visibleCount === 1 ? " locality found" : " localities found");
+
+      noResults.style.display =
+        visibleCount === 0 ? "block" : "none";
+    }
+
+    searchForm.addEventListener("submit", filterLocations);
+    searchInput.addEventListener("input", filterLocations);
+    typeSelect.addEventListener("change", filterLocations);
+
+    // Send selected locality to the homepage contact section.
+    document.querySelectorAll("[data-locality]").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const locality = link.dataset.locality;
+        const url = new URL("index.html", window.location.href);
+
+        url.hash = "contact";
+        url.searchParams.set("locality", locality);
+
+        window.location.href = url.toString();
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>

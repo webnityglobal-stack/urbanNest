@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover residential, commercial and investment properties with UrbanNest Realty.">
+  <title>UrbanNest Realty | Find Your Next Address</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* FOOTER DESIGN */
+    .footer {
+      background: #0f1f1b;
+      color: #c5d4cf;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .footer .container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 32px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .8fr .85fr 1fr;
+      gap: 48px;
+      padding: 70px 0 52px;
+      align-items: start;
+    }
+
+    .footer-brand,
+    .footer-column {
+      min-width: 0;
+    }
+
+    .footer .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 24px;
+      text-decoration: none;
+    }
+
+    .footer .brand-symbol {
+      width: 57px;
+      height: 57px;
+      flex-shrink: 0;
+      border: 1px solid #d5ad6b;
+      border-radius: 15px 15px 15px 5px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 5px;
+      box-sizing: border-box;
+      position: relative;
+      font-size: 25px;
+      font-weight: 800;
+      transform: rotate(-5deg);
+    }
+
+    .footer .brand-symbol span {
+      color: #d5ad6b;
+      position: absolute;
+      right: 10px;
+      bottom: -3px;
+      font-size: 23px;
+    }
+
+    .footer .brand-name {
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      font-family: "Manrope", sans-serif;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      line-height: 1.35;
+    }
+
+    .footer .brand-name small {
+      color: #9aaca5;
+      font-size: 9px;
+      letter-spacing: 2.7px;
+      font-weight: 700;
+      margin-top: 3px;
+      white-space: nowrap;
+    }
+
+    .footer-about {
+      max-width: 390px;
+      color: #c5d4cf;
+      font-size: 15px;
+      line-height: 2;
+      margin: 0;
+    }
+
+    .footer-column h4 {
+      color: #e8c58d;
+      font-family: "Manrope", sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      margin: 4px 0 25px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 17px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+      color: #c5d4cf;
+      font-size: 15px;
+      line-height: 1.7;
+      text-decoration: none;
+      transition: color .25s ease, transform .25s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-contact a:hover {
+      color: #e8c58d;
+      transform: translateX(3px);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .footer-contact p {
+      color: #c5d4cf;
+      font-size: 14px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .footer-contact a.footer-whatsapp {
+      color: #f0cf91;
+    }
+
+    .footer-bottom {
+      min-height: 76px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding: 18px 0;
+      box-sizing: border-box;
+    }
+
+    .footer-bottom span {
+      color: #91aaa1;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 30px;
+      bottom: 28px;
+      z-index: 9999;
+      width: 66px;
+      height: 66px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: #20ce70;
+      color: #fff;
+      font-size: 32px;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(0,0,0,.2);
+      transition: transform .25s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 1050px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 42px 35px;
+        padding: 55px 0 42px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer .container {
+        padding: 0 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 42px 0 35px;
+      }
+
+      .footer .brand-name {
+        font-size: 21px;
+      }
+
+      .footer-about {
+        font-size: 14px;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+        padding: 20px 0;
+      }
+
+      .footer-bottom span {
+        font-size: 12px;
+      }
+
+      .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        right: 17px;
+        bottom: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+    <span class="brand-symbol">U<span>N</span></span>
+    <span class="brand-name">URBANNEST<small>REALTY &amp; ADVISORY</small></span>
+  </a>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav">☰</button>
+
+  <nav class="nav" id="nav">
+    <a href="index.html#home">Home</a>
+    <a href="properties.html">Properties</a>
+    <a href="expertise.html">Expertise</a>
+    <a href="location.html">Locations</a>
+    <a href="about.html">About us</a>
+    <a class="nav-cta" href="#contact">Let's talk ↗</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <div class="eyebrow"><span></span> REAL ESTATE, REIMAGINED</div>
+      <h1>Space to live.<br>Room to <em>grow.</em></h1>
+
+      <p class="hero-description">
+        Exceptional properties. Thoughtful guidance. A better way to find
+        your place in the world.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#properties" class="button button-gold">Explore properties <span>↗</span></a>
+        <a href="#about" class="text-link">Discover our approach <span>→</span></a>
+      </div>
+
+      <div class="hero-proof">
+        <div class="avatar-stack">
+          <span>U</span><span>N</span><span>R</span>
+        </div>
+        <div>
+          <strong>Your property, your priorities.</strong>
+          <small>Personal guidance at every step</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=85" alt="Contemporary luxury residence">
+      <div class="image-label"><span class="live-dot"></span> CURATED LIVING</div>
+      <div class="hero-image-caption">
+        <span>01 / THE ART OF HOME</span>
+        <h2>Find a place<br>that feels like you.</h2>
+      </div>
+      <div class="floating-note">
+        <span class="note-icon">⌂</span>
+        <div>
+          <small>YOUR NEXT CHAPTER</small>
+          <strong>Starts with the right address.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-side-note">PROPERTY · PEOPLE · POSSIBILITY</div>
+  </section>
+
+  <!-- PROPERTY SEARCH -->
+  <section class="search-section" aria-label="Property search">
+    <div class="search-heading">
+      <span>LET'S FIND YOUR PLACE</span>
+      <p>What are you looking for?</p>
+    </div>
+
+    <form id="searchForm" class="search-form">
+      <label>I'm looking for
+        <select id="searchType">
+          <option value="all">All properties</option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Industrial">Industrial</option>
+        </select>
+      </label>
+
+      <label>Preferred location
+        <select id="searchLocation">
+          <option value="all">All locations</option>
+          <option value="Noida">Noida</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Gurugram">Gurugram</option>
+          <option value="Greater Noida">Greater Noida</option>
+        </select>
+      </label>
+
+      <label>Budget
+        <select id="searchBudget">
+          <option value="all">Any budget</option>
+          <option value="1">Under ₹1 Cr</option>
+          <option value="2">₹1–3 Cr</option>
+          <option value="3">Above ₹3 Cr</option>
+        </select>
+      </label>
+
+      <button class="button button-green search-button" type="submit">
+        <span>⌕</span> Find properties
+      </button>
+    </form>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="intro section-pad" id="about">
+    <div class="section-kicker">01 — A DIFFERENT KIND OF REALTY</div>
+
+    <div class="intro-grid">
+      <h2>Good property decisions<br>begin with <em>good people.</em></h2>
+      <div class="intro-text">
+        <p>
+          Buying, selling or investing is more than a transaction. It's a
+          decision about your future. We bring local insight, clear
+          communication and a considered approach to every property journey.
+        </p>
+        <a href="about.html" class="under-link">Get to know UrbanNest <span>↗</span></a>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div><strong>01<span>.</span></strong><p>Personalised guidance</p></div>
+      <div><strong>02<span>.</span></strong><p>Local market insight</p></div>
+      <div><strong>03<span>.</span></strong><p>Clear communication</p></div>
+      <div><strong>04<span>.</span></strong><p>Long-term relationships</p></div>
+    </div>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section class="property-section section-pad" id="properties">
+    <div class="section-kicker">02 — HANDPICKED FOR YOU</div>
+
+    <div class="section-heading">
+      <div>
+        <h2>Spaces worth<br><em>looking closer at.</em></h2>
+        <p>Explore a selection of property types to match your plans.</p>
+      </div>
+      <a href="#contact" class="under-link">Request a shortlist ↗</a>
+    </div>
+
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">All spaces</button>
+      <button class="filter-btn" data-filter="Residential">Residential</button>
+      <button class="filter-btn" data-filter="Commercial">Commercial</button>
+      <button class="filter-btn" data-filter="Industrial">Industrial</button>
+    </div>
+
+    <div class="property-grid" id="propertyGrid">
+
+      <article class="property-card property-large" data-type="Residential" data-location="Noida" data-budget="2">
+        <div class="property-image">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85" alt="Modern luxury house">
+          <span class="property-tag">RESIDENTIAL</span>
+          <button class="heart-btn" aria-label="Save property" aria-pressed="false">♡</button>
+          <span class="image-count">01 / 04</span>
+        </div>
+        <div class="property-info">
+          <div>
+            <span class="property-location">NOIDA · SECTOR 150</span>
+            <h3>The Garden Residence</h3>
+          </div>
+          <span class="property-price">₹1.8 Cr*</span>
+        </div>
+        <div class="property-meta"><span>⌂ Independent living</span><span>↗ Enquire</span></div>
+      </article>
+
+      <article class="property-card property-offset" data-type="Commercial" data-location="Gurugram" data-budget="3">
+        <div class="property-image">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85" alt="Modern commercial tower">
+          <span class="property-tag">COMMERCIAL</span>
+          <button class="heart-btn" aria-label="Save property" aria-pressed="false">♡</button>
+          <span class="image-count">02 / 04</span>
+        </div>
+        <div class="property-info">
+          <div>
+            <span class="property-location">GURUGRAM · BUSINESS DISTRICT</span>
+            <h3>The Workhouse</h3>
+          </div>
+          <span class="property-price">On request</span>
+        </div>
+        <div class="property-meta"><span>▦ Office spaces</span><span>↗ Enquire</span></div>
+      </article>
+
+      <article class="property-card" data-type="Industrial" data-location="Greater Noida" data-budget="2">
+        <div class="property-image">
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=85" alt="Industrial facility">
+          <span class="property-tag">INDUSTRIAL</span>
+          <button class="heart-btn" aria-label="Save property" aria-pressed="false">♡</button>
+          <span class="image-count">03 / 04</span>
+        </div>
+        <div class="property-info">
+          <div>
+            <span class="property-location">GREATER NOIDA · INDUSTRIAL BELT</span>
+            <h3>Enterprise Park</h3>
+          </div>
+          <span class="property-price">On request</span>
+        </div>
+        <div class="property-meta"><span>▤ Industrial space</span><span>↗ Enquire</span></div>
+      </article>
+
+      <article class="property-card property-offset" data-type="Residential" data-location="Delhi" data-budget="3">
+        <div class="property-image">
+          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85" alt="Elegant contemporary home">
+          <span class="property-tag">RESIDENTIAL</span>
+          <button class="heart-btn" aria-label="Save property" aria-pressed="false">♡</button>
+          <span class="image-count">04 / 04</span>
+        </div>
+        <div class="property-info">
+          <div>
+            <span class="property-location">DELHI · PREMIUM ADDRESS</span>
+            <h3>The Courtyard House</h3>
+          </div>
+          <span class="property-price">₹3.2 Cr*</span>
+        </div>
+        <div class="property-meta"><span>⌂ Premium residence</span><span>↗ Enquire</span></div>
+      </article>
+
+    </div>
+
+    <p class="disclaimer">
+      *Illustrative listing prices. Availability, property details and final
+      pricing must be confirmed with our team.
+    </p>
+
+    <p id="noResults" class="no-results" hidden>
+      No matching properties. Try changing your filters or contact us for a
+      personalised shortlist.
+    </p>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="expertise" id="expertise">
+    <div class="expertise-image">
+      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85" alt="Architect-designed home interior">
+      <div class="expertise-stamp">A MORE<br>THOUGHTFUL<br>PROPERTY<br>JOURNEY.</div>
+    </div>
+
+    <div class="expertise-copy">
+      <div class="section-kicker">03 — OUR EXPERTISE</div>
+      <h2>One partner.<br><em>More possibilities.</em></h2>
+      <p>
+        From finding your first home to identifying your next business
+        address, we help you move forward with confidence.
+      </p>
+      <a href="expertise.html" class="button button-gold">Talk to our team ↗</a>
+
+      <div class="expertise-list">
+        <div><span>01</span><strong>Residential properties</strong><span>↗</span></div>
+        <div><span>02</span><strong>Commercial real estate</strong><span>↗</span></div>
+        <div><span>03</span><strong>Industrial spaces</strong><span>↗</span></div>
+        <div><span>04</span><strong>Property investment guidance</strong><span>↗</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations section-pad" id="locations">
+    <div class="section-kicker">04 — FIND YOUR NEIGHBOURHOOD</div>
+
+    <div class="section-heading">
+      <div>
+        <h2>Rooted in the region.<br><em>Connected to opportunity.</em></h2>
+      </div>
+      <p>Tell us where you want to be. We'll help you explore the possibilities.</p>
+    </div>
+
+    <div class="location-grid">
+      <a class="location-card location-noida" href="#contact" data-city="Noida">
+        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=900&q=80" alt="City skyline">
+        <span class="location-number">01 / NCR</span>
+        <div><h3>Noida</h3><span>Explore area ↗</span></div>
+      </a>
+
+      <a class="location-card" href="#contact" data-city="Delhi">
+        <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=80" alt="Urban city buildings">
+        <span class="location-number">02 / NCR</span>
+        <div><h3>Delhi</h3><span>Explore area ↗</span></div>
+      </a>
+
+      <a class="location-card" href="#contact" data-city="Gurugram">
+        <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80" alt="Modern architecture">
+        <span class="location-number">03 / NCR</span>
+        <div><h3>Gurugram</h3><span>Explore area ↗</span></div>
+      </a>
+
+      <a class="location-card" href="#contact" data-city="Greater Noida">
+        <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=900&q=80" alt="Contemporary property development">
+        <span class="location-number">04 / NCR</span>
+        <div><h3>Greater Noida</h3><span>Explore area ↗</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CUSTOMER JOURNEY -->
+  <section class="journey section-pad">
+    <div class="section-kicker">05 — SIMPLE BY DESIGN</div>
+    <div class="section-heading">
+      <h2>A clearer path<br><em>to your next move.</em></h2>
+    </div>
+
+    <div class="journey-steps">
+      <div>
+        <span>01</span>
+        <h3>We listen</h3>
+        <p>We understand your goals, budget, preferred areas and priorities.</p>
+      </div>
+      <div>
+        <span>02</span>
+        <h3>We shortlist</h3>
+        <p>We help you explore suitable options with clear, relevant information.</p>
+      </div>
+      <div>
+        <span>03</span>
+        <h3>You decide</h3>
+        <p>We support your next steps and help coordinate the property journey.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-copy">
+      <div class="section-kicker">06 — YOUR NEXT CHAPTER</div>
+      <h2>Let's find<br>your <em>somewhere.</em></h2>
+      <p>
+        Tell us a little about what you're looking for. Our team can help you
+        explore the next steps.
+      </p>
+
+      <div class="contact-details">
+        <span>PROPERTY CONSULTATION</span>
+        <a href="mailto:hello@urbannest.example">hello@urbannest.example</a>
+        <small>Replace this demo email with your actual business email.</small>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <h3>Start a conversation</h3>
+      <p>Share your details and property preferences.</p>
+
+      <label>Your name
+        <input type="text" id="clientName" placeholder="Enter your full name" required>
+      </label>
+
+      <label>Phone number
+        <input type="tel" id="clientPhone" placeholder="+91 98765 43210"
+          pattern="[0-9+() -]{8,18}" required>
+      </label>
+
+      <label>I'm interested in
+        <select id="clientInterest" required>
+          <option value="">Choose a property type</option>
+          <option>Residential</option>
+          <option>Commercial</option>
+          <option>Industrial</option>
+          <option>Investment consultation</option>
+        </select>
+      </label>
+
+      <label>Preferred location
+        <input type="text" id="clientLocation" placeholder="e.g. Noida, Gurugram">
+      </label>
+
+      <button type="submit" class="button button-green">Send enquiry ↗</button>
+      <small class="form-note">
+        Configure your WhatsApp business number in script.js to receive enquiries.
+      </small>
+    </form>
+  </section>
+
+</main>
+
+<!-- ==========================================
+     FOOTER — SCREENSHOT STYLE
+========================================== -->
+<footer class="footer" id="footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <!-- BRAND -->
+      <div class="footer-brand">
+        <a href="index.html#home" class="brand" aria-label="UrbanNest Realty Home">
+          <span class="brand-symbol">U<span>N</span></span>
+          <span class="brand-name">
+            URBANNEST
+            <small>REALTY &amp; ADVISORY</small>
+          </span>
+        </a>
+
+        <p class="footer-about">
+          A considered approach to property discovery.
+          Explore homes, business spaces and investment
+          opportunities with a focus on your goals and requirements.
+        </p>
+      </div>
+
+      <!-- EXPLORE -->
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <div class="footer-links">
+          <a href="index.html#home">Home</a>
+          <a href="properties.html">All Properties</a>
+          <a href="expertise.html">Our Expertise</a>
+          <a href="location.html">Locations</a>
+          <a href="about.html">About Us</a>
+        </div>
+      </div>
+
+      <!-- PROPERTY TYPES -->
+      <div class="footer-column">
+        <h4>Property Types</h4>
+        <div class="footer-links">
+          <a href="properties.html">Residential</a>
+          <a href="properties.html">Commercial</a>
+          <a href="properties.html">Industrial</a>
+          <a href="index.html#contact">Investment Enquiry</a>
+        </div>
+      </div>
+
+      <!-- GET IN TOUCH -->
+      <div class="footer-column">
+        <h4>Get In Touch</h4>
+        <div class="footer-contact">
+          <p>Property enquiries and personalised assistance.</p>
+          <a href="#" id="footerWhatsApp" class="footer-whatsapp"
+             target="_blank" rel="noopener noreferrer">
+            Message us on WhatsApp ↗
+          </a>
+          <a href="index.html#contact">
+            Visit Contact Page ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+      <span>
+        © <span id="currentYear"></span> UrbanNest Realty. All rights reserved.
+      </span>
+      <span>Property decisions deserve thoughtful guidance.</span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="whatsapp-float" id="whatsappFloat" href="#"
+   aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+  ✆
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- EXISTING JAVASCRIPT -->
+<script src="script.js"></script>
+
+<script>
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
