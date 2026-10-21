@@ -1,370 +1,636 @@
 
-/* ==========================================
-   UrbanNest Realty - Website Interactions
-   Fully Updated script.js
-========================================== */
+/* =========================================================
+   URBANNEST REALTY — COMPLETE SCRIPT.JS
+   Mobile Navigation | Property Filters | Favourites
+   Contact Form | WhatsApp | Location | Toast | Current Year
+========================================================= */
 
-/* Replace with your real WhatsApp business number.
-   Country code + number, without +, spaces or dashes. */
-const WHATSAPP_NUMBER = "919876543210";
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
 
-/* ==========================================
-   DOM ELEMENTS
-========================================== */
+  /* =======================================================
+     1. COMMON ELEMENTS
+  ======================================================= */
 
-const nav = document.getElementById("nav");
-const menuToggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("nav");
+  const menuToggle = document.getElementById("menuToggle");
+  const contactForm = document.getElementById("contactForm");
+  const toast = document.getElementById("toast");
+  const currentYear = document.getElementById("currentYear");
 
-const propertyCards = [
-  ...document.querySelectorAll(".property-card")
-];
+  const whatsappFloat = document.getElementById("whatsappFloat");
+  const footerWhatsApp = document.getElementById("footerWhatsApp");
 
-const filterButtons = [
-  ...document.querySelectorAll(".filter-btn")
-];
+  // IMPORTANT: Replace this demo number with your WhatsApp
+  // business number, including country code and no + sign.
+  const WHATSAPP_NUMBER = "919876543210";
 
-const noResults = document.getElementById("noResults");
-const toast = document.getElementById("toast");
+  let toastTimer;
 
-/* Safely update footer year */
-const yearElement = document.getElementById("year");
+  /* =======================================================
+     2. CURRENT YEAR
+  ======================================================= */
 
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
-
-/* ==========================================
-   MOBILE NAVIGATION
-========================================== */
-
-function closeMobileMenu() {
-  if (!nav || !menuToggle) return;
-
-  nav.classList.remove("open");
-
-  menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Open navigation menu");
-  menuToggle.textContent = "☰";
-}
-
-function toggleMobileMenu() {
-  if (!nav || !menuToggle) return;
-
-  const isOpen = nav.classList.toggle("open");
-
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.setAttribute(
-    "aria-label",
-    isOpen ? "Close navigation menu" : "Open navigation menu"
-  );
-
-  menuToggle.textContent = isOpen ? "✕" : "☰";
-}
-
-/* Attach mobile menu events */
-if (nav && menuToggle) {
-  menuToggle.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    toggleMobileMenu();
-  });
-
-  /* Close menu after clicking a navigation link */
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      closeMobileMenu();
-    });
-  });
-
-  /* Close menu when clicking outside the navigation */
-  document.addEventListener("click", (event) => {
-    if (
-      nav.classList.contains("open") &&
-      !nav.contains(event.target) &&
-      !menuToggle.contains(event.target)
-    ) {
-      closeMobileMenu();
-    }
-  });
-
-  /* Close menu with Escape key */
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeMobileMenu();
-    }
-  });
-
-  /* Close mobile menu when returning to desktop layout */
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-      closeMobileMenu();
-    }
-  });
-}
-
-/* ==========================================
-   TOAST NOTIFICATIONS
-========================================== */
-
-let toastTimer;
-
-function showToast(message) {
-  if (!toast) {
-    console.log(message);
-    return;
+  if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
   }
 
-  toast.textContent = message;
-  toast.classList.add("show");
+  /* =======================================================
+     3. TOAST NOTIFICATION
+  ======================================================= */
 
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3200);
-}
-
-/* ==========================================
-   PROPERTY FILTERING
-========================================== */
-
-let selectedType = "all";
-
-function filterProperties() {
-  const locationElement = document.getElementById("searchLocation");
-  const budgetElement = document.getElementById("searchBudget");
-
-  const location = locationElement
-    ? locationElement.value
-    : "all";
-
-  const budget = budgetElement
-    ? budgetElement.value
-    : "all";
-
-  let visibleCount = 0;
-
-  propertyCards.forEach((card) => {
-    const matchesType =
-      selectedType === "all" ||
-      card.dataset.type === selectedType;
-
-    const matchesLocation =
-      location === "all" ||
-      card.dataset.location === location;
-
-    const cardBudget = Number(card.dataset.budget);
-
-    const matchesBudget =
-      budget === "all" ||
-      (budget === "1" && cardBudget === 1) ||
-      (budget === "2" && cardBudget === 2) ||
-      (budget === "3" && cardBudget === 3);
-
-    const isVisible =
-      matchesType && matchesLocation && matchesBudget;
-
-    card.hidden = !isVisible;
-
-    if (isVisible) {
-      visibleCount++;
-    }
-  });
-
-  if (noResults) {
-    noResults.hidden = visibleCount !== 0;
-  }
-}
-
-/* Property type filter buttons */
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    selectedType = button.dataset.filter || "all";
-
-    filterButtons.forEach((item) => {
-      const isActive = item === button;
-
-      item.classList.toggle("active", isActive);
-      item.setAttribute("aria-pressed", String(isActive));
-    });
-
-    filterProperties();
-  });
-});
-
-/* Search form */
-const searchForm = document.getElementById("searchForm");
-
-if (searchForm) {
-  searchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const searchType = document.getElementById("searchType");
-
-    selectedType = searchType
-      ? searchType.value
-      : "all";
-
-    filterButtons.forEach((button) => {
-      const isActive =
-        (button.dataset.filter || "all") === selectedType;
-
-      button.classList.toggle("active", isActive);
-      button.setAttribute("aria-pressed", String(isActive));
-    });
-
-    filterProperties();
-
-    const propertiesSection = document.getElementById("properties");
-
-    if (propertiesSection) {
-      propertiesSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-
-    const hasResults = propertyCards.some(
-      (card) => !card.hidden
-    );
-
-    if (!hasResults) {
-      showToast(
-        "No exact match found. Try different filters or send us an enquiry."
-      );
-    }
-  });
-}
-
-/* ==========================================
-   FAVOURITE PROPERTY BUTTONS
-========================================== */
-
-document.querySelectorAll(".heart-btn").forEach((button) => {
-  button.addEventListener("click", () => {
-    const saved = button.classList.toggle("saved");
-
-    button.textContent = saved ? "♥" : "♡";
-    button.setAttribute("aria-pressed", String(saved));
-
-    const propertyCard = button.closest(".property-card");
-    const heading = propertyCard
-      ? propertyCard.querySelector("h3")
-      : null;
-
-    const propertyName = heading
-      ? heading.textContent.trim()
-      : "Property";
-
-    showToast(
-      saved
-        ? `${propertyName} added to favourites.`
-        : `${propertyName} removed from favourites.`
-    );
-  });
-});
-
-/* ==========================================
-   LOCATION CARD ENQUIRY
-========================================== */
-
-document.querySelectorAll(".location-card").forEach((card) => {
-  card.addEventListener("click", () => {
-    const clientLocation = document.getElementById("clientLocation");
-
-    if (clientLocation && card.dataset.city) {
-      clientLocation.value = card.dataset.city;
-    }
-  });
-});
-
-/* ==========================================
-   WHATSAPP HELPER
-========================================== */
-
-function openWhatsApp(message) {
-  if (!/^[0-9]{10,15}$/.test(WHATSAPP_NUMBER)) {
-    showToast(
-      "Please configure your WhatsApp business number in script.js."
-    );
-    return;
-  }
-
-  const url =
-    "https://wa.me/" +
-    WHATSAPP_NUMBER +
-    "?text=" +
-    encodeURIComponent(message);
-
-  window.open(url, "_blank", "noopener,noreferrer");
-}
-
-/* ==========================================
-   CONTACT FORM
-========================================== */
-
-const contactForm = document.getElementById("contactForm");
-
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const nameElement = document.getElementById("clientName");
-    const phoneElement = document.getElementById("clientPhone");
-    const interestElement = document.getElementById("clientInterest");
-    const locationElement = document.getElementById("clientLocation");
-
-    const name = nameElement ? nameElement.value.trim() : "";
-    const phone = phoneElement ? phoneElement.value.trim() : "";
-    const interest = interestElement ? interestElement.value : "";
-    const location = locationElement
-      ? locationElement.value.trim()
-      : "";
-
-    if (!name || !phone || !interest) {
-      showToast("Please complete the required fields.");
+  function showToast(message) {
+    if (!toast) {
+      alert(message);
       return;
     }
 
-    const message = [
-      "Hello UrbanNest Realty!",
-      "",
-      "I would like to enquire about a property.",
-      "Name: " + name,
-      "Phone: " + phone,
-      "Interest: " + interest,
-      "Preferred location: " + (location || "Not specified"),
-      "",
-      "Please contact me with suitable options."
-    ].join("\n");
+    toast.textContent = message;
+    toast.classList.add("show");
 
-    openWhatsApp(message);
-  });
-}
+    window.clearTimeout(toastTimer);
 
-/* ==========================================
-   FLOATING WHATSAPP BUTTON
-========================================== */
+    toastTimer = window.setTimeout(function () {
+      toast.classList.remove("show");
+    }, 3000);
+  }
 
-const whatsappFloat = document.getElementById("whatsappFloat");
+  /* =======================================================
+     4. MOBILE HAMBURGER NAVIGATION — FIXED
+  ======================================================= */
 
-if (whatsappFloat) {
-  whatsappFloat.addEventListener("click", (event) => {
-    event.preventDefault();
+  function openMobileMenu() {
+    if (!nav || !menuToggle) return;
 
-    openWhatsApp(
-      "Hello UrbanNest Realty! I would like to know more about your properties."
+    nav.classList.add("open");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Close navigation");
+    menuToggle.textContent = "✕";
+  }
+
+  function closeMobileMenu() {
+    if (!nav || !menuToggle) return;
+
+    nav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+    menuToggle.textContent = "☰";
+  }
+
+  function toggleMobileMenu() {
+    if (!nav || !menuToggle) return;
+
+    const isOpen = nav.classList.contains("open");
+
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  if (nav && menuToggle) {
+    // Ensure the button behaves as a button, not a form submit.
+    menuToggle.setAttribute("type", "button");
+
+    menuToggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleMobileMenu();
+    });
+
+    // Close the menu after selecting a navigation link.
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        closeMobileMenu();
+      });
+    });
+
+    // Close the menu when clicking outside the header navigation.
+    document.addEventListener("click", function (event) {
+      const clickedInsideNav = nav.contains(event.target);
+      const clickedToggle = menuToggle.contains(event.target);
+
+      if (!clickedInsideNav && !clickedToggle) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close the menu with Escape.
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+      }
+    });
+
+    // Reset mobile menu when switching back to desktop width.
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768) {
+        closeMobileMenu();
+      }
+    });
+  }
+
+  /* =======================================================
+     5. WHATSAPP LINK HELPER
+  ======================================================= */
+
+  function getWhatsAppUrl(message) {
+    const number = WHATSAPP_NUMBER.replace(/\D/g, "");
+
+    return (
+      "https://wa.me/" +
+      number +
+      "?text=" +
+      encodeURIComponent(message)
     );
+  }
+
+  function setWhatsAppLink(element, message) {
+    if (!element) return;
+
+    element.href = getWhatsAppUrl(message);
+    element.target = "_blank";
+    element.rel = "noopener noreferrer";
+  }
+
+  setWhatsAppLink(
+    whatsappFloat,
+    "Hello UrbanNest Realty! I would like to know more about your properties."
+  );
+
+  setWhatsAppLink(
+    footerWhatsApp,
+    "Hello UrbanNest Realty! I would like to discuss a property."
+  );
+
+  /* =======================================================
+     6. CONTACT FORM → WHATSAPP
+  ======================================================= */
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      const nameElement = document.getElementById("clientName");
+      const phoneElement = document.getElementById("clientPhone");
+      const interestElement = document.getElementById("clientInterest");
+      const locationElement = document.getElementById("clientLocation");
+
+      const clientName = nameElement
+        ? nameElement.value.trim()
+        : "";
+
+      const clientPhone = phoneElement
+        ? phoneElement.value.trim()
+        : "";
+
+      const clientInterest = interestElement
+        ? interestElement.value.trim()
+        : "";
+
+      const clientLocation = locationElement
+        ? locationElement.value.trim()
+        : "";
+
+      const message = [
+        "Hello UrbanNest Realty!",
+        "",
+        "I would like to enquire about a property.",
+        "",
+        "Name: " + clientName,
+        "Phone: " + clientPhone,
+        "Interested in: " + clientInterest,
+        "Preferred location: " + (clientLocation || "Not specified"),
+        "",
+        "Please contact me with suitable property options."
+      ].join("\n");
+
+      const whatsappUrl = getWhatsAppUrl(message);
+
+      // Open WhatsApp with the enquiry prefilled.
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+      showToast("Your enquiry is ready to send on WhatsApp.");
+
+      // Do not clear the form automatically.
+      // The visitor can review their details if needed.
+    });
+  }
+
+  /* =======================================================
+     7. LOCATION LINKS / LOCATION PREFILL
+  ======================================================= */
+
+  document.querySelectorAll("[data-location]").forEach(function (item) {
+    item.addEventListener("click", function () {
+      const selectedLocation = item
+        .getAttribute("data-location")
+        .trim();
+
+      const locationInput = document.getElementById("clientLocation");
+
+      if (locationInput) {
+        locationInput.value = selectedLocation;
+      }
+
+      // If the contact section exists, move to it.
+      const contactSection = document.getElementById("contact");
+
+      if (contactSection) {
+        contactSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
   });
-}
 
-/* ==========================================
-   INITIAL PAGE STATE
-========================================== */
+  /* =======================================================
+     8. PROPERTY SEARCH AND FILTERS
+     Supports common property filter element IDs.
+  ======================================================= */
 
-filterProperties();
+  const propertySearch =
+    document.getElementById("propertySearch") ||
+    document.getElementById("searchInput");
 
-if (menuToggle) {
-  menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Open navigation menu");
-}
+  const propertyTypeFilter =
+    document.getElementById("propertyType") ||
+    document.getElementById("typeFilter");
+
+  const locationFilter =
+    document.getElementById("locationFilter");
+
+  const priceFilter =
+    document.getElementById("priceFilter");
+
+  const searchForm = document.getElementById("searchForm");
+
+  function getPropertyCards() {
+    const selectors = [
+      ".property-card",
+      ".property-item",
+      "[data-property-card]"
+    ];
+
+    for (const selector of selectors) {
+      const cards = document.querySelectorAll(selector);
+
+      if (cards.length > 0) {
+        return Array.from(cards);
+      }
+    }
+
+    return [];
+  }
+
+  function getCardText(card) {
+    return (card.innerText || card.textContent || "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function filterProperties() {
+    const cards = getPropertyCards();
+
+    if (cards.length === 0) return;
+
+    const searchText = propertySearch
+      ? propertySearch.value.trim().toLowerCase()
+      : "";
+
+    const selectedType = propertyTypeFilter
+      ? propertyTypeFilter.value.trim().toLowerCase()
+      : "";
+
+    const selectedLocation = locationFilter
+      ? locationFilter.value.trim().toLowerCase()
+      : "";
+
+    const selectedPrice = priceFilter
+      ? priceFilter.value.trim()
+      : "";
+
+    let visibleCount = 0;
+
+    cards.forEach(function (card) {
+      const cardText = getCardText(card);
+
+      const cardType = (
+        card.getAttribute("data-type") || ""
+      ).toLowerCase();
+
+      const cardLocation = (
+        card.getAttribute("data-location") || ""
+      ).toLowerCase();
+
+      const cardPrice = Number(
+        card.getAttribute("data-price") ||
+        card.getAttribute("data-price-value") ||
+        0
+      );
+
+      const matchesSearch =
+        !searchText || cardText.includes(searchText);
+
+      const matchesType =
+        !selectedType ||
+        selectedType === "all" ||
+        selectedType === "any" ||
+        cardType === selectedType ||
+        cardText.includes(selectedType);
+
+      const matchesLocation =
+        !selectedLocation ||
+        selectedLocation === "all" ||
+        selectedLocation === "any" ||
+        cardLocation === selectedLocation ||
+        cardText.includes(selectedLocation);
+
+      let matchesPrice = true;
+
+      if (selectedPrice && cardPrice > 0) {
+        if (selectedPrice === "under-50") {
+          matchesPrice = cardPrice < 5000000;
+        } else if (selectedPrice === "50-100") {
+          matchesPrice =
+            cardPrice >= 5000000 && cardPrice <= 10000000;
+        } else if (selectedPrice === "100-200") {
+          matchesPrice =
+            cardPrice > 10000000 && cardPrice <= 20000000;
+        } else if (selectedPrice === "above-200") {
+          matchesPrice = cardPrice > 20000000;
+        }
+      }
+
+      const shouldShow =
+        matchesSearch &&
+        matchesType &&
+        matchesLocation &&
+        matchesPrice;
+
+      card.hidden = !shouldShow;
+      card.style.display = shouldShow ? "" : "none";
+
+      if (shouldShow) {
+        visibleCount++;
+      }
+    });
+
+    const resultsCount = document.getElementById("resultsCount");
+
+    if (resultsCount) {
+      resultsCount.textContent =
+        visibleCount + (visibleCount === 1
+          ? " property found"
+          : " properties found");
+    }
+
+    const noResults = document.getElementById("noResults");
+
+    if (noResults) {
+      noResults.hidden = visibleCount !== 0;
+      noResults.style.display =
+        visibleCount === 0 ? "" : "none";
+    }
+  }
+
+  if (searchForm) {
+    searchForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      filterProperties();
+
+      const propertiesSection =
+        document.getElementById("properties") ||
+        document.getElementById("propertyListing");
+
+      if (propertiesSection) {
+        propertiesSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
+  }
+
+  if (propertySearch) {
+    propertySearch.addEventListener("input", filterProperties);
+  }
+
+  if (propertyTypeFilter) {
+    propertyTypeFilter.addEventListener("change", filterProperties);
+  }
+
+  if (locationFilter) {
+    locationFilter.addEventListener("change", filterProperties);
+  }
+
+  if (priceFilter) {
+    priceFilter.addEventListener("change", filterProperties);
+  }
+
+  /* =======================================================
+     9. RESET PROPERTY FILTERS
+  ======================================================= */
+
+  const resetFiltersButton =
+    document.getElementById("resetFilters") ||
+    document.getElementById("clearFilters");
+
+  if (resetFiltersButton) {
+    resetFiltersButton.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      if (propertySearch) propertySearch.value = "";
+      if (propertyTypeFilter) propertyTypeFilter.value = "";
+      if (locationFilter) locationFilter.value = "";
+      if (priceFilter) priceFilter.value = "";
+
+      filterProperties();
+    });
+  }
+
+  /* =======================================================
+     10. FAVOURITES / SAVE PROPERTY
+     Works with .favorite-btn or [data-favorite].
+  ======================================================= */
+
+  const FAVOURITES_KEY = "urbannest_favourites";
+
+  function readFavourites() {
+    try {
+      const saved = localStorage.getItem(FAVOURITES_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.warn("Could not read saved favourites:", error);
+      return [];
+    }
+  }
+
+  function saveFavourites(favourites) {
+    try {
+      localStorage.setItem(
+        FAVOURITES_KEY,
+        JSON.stringify(favourites)
+      );
+    } catch (error) {
+      console.warn("Could not save favourites:", error);
+      showToast("Your browser could not save this favourite.");
+    }
+  }
+
+  function getPropertyIdentifier(button) {
+    const card = button.closest(
+      ".property-card, .property-item, [data-property-card]"
+    );
+
+    return (
+      button.getAttribute("data-property-id") ||
+      (card && card.getAttribute("data-property-id")) ||
+      (card && card.querySelector("h2, h3, h4") &&
+        card.querySelector("h2, h3, h4").textContent.trim()) ||
+      window.location.pathname
+    );
+  }
+
+  function updateFavouriteButton(button, isFavourite) {
+    button.classList.toggle("is-favourite", isFavourite);
+    button.classList.toggle("active", isFavourite);
+    button.setAttribute("aria-pressed", String(isFavourite));
+
+    const label = isFavourite
+      ? "Remove from favourites"
+      : "Add to favourites";
+
+    button.setAttribute("aria-label", label);
+    button.title = label;
+
+    const labelElement = button.querySelector("[data-favorite-label]");
+
+    if (labelElement) {
+      labelElement.textContent = isFavourite
+        ? "Saved"
+        : "Save";
+    }
+  }
+
+  const favouriteButtons = document.querySelectorAll(
+    ".favorite-btn, .favourite-btn, [data-favorite]"
+  );
+
+  favouriteButtons.forEach(function (button) {
+    const propertyId = getPropertyIdentifier(button);
+    const initialFavourites = readFavourites();
+
+    updateFavouriteButton(
+      button,
+      initialFavourites.includes(propertyId)
+    );
+
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const id = getPropertyIdentifier(button);
+      let favourites = readFavourites();
+
+      if (favourites.includes(id)) {
+        favourites = favourites.filter(function (item) {
+          return item !== id;
+        });
+
+        updateFavouriteButton(button, false);
+        showToast("Property removed from favourites.");
+      } else {
+        favourites.push(id);
+
+        updateFavouriteButton(button, true);
+        showToast("Property added to favourites.");
+      }
+
+      saveFavourites(favourites);
+    });
+  });
+
+  /* =======================================================
+     11. PROPERTY ENQUIRY BUTTONS
+  ======================================================= */
+
+  document.querySelectorAll(
+    "[data-property-enquiry], .property-enquiry"
+  ).forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      const card = button.closest(
+        ".property-card, .property-item, [data-property-card]"
+      );
+
+      const titleElement = card
+        ? card.querySelector("h2, h3, h4")
+        : null;
+
+      const propertyName = titleElement
+        ? titleElement.textContent.trim()
+        : "a property listed on your website";
+
+      const message =
+        "Hello UrbanNest Realty! I am interested in " +
+        propertyName +
+        ". Please share more details.";
+
+      // Use a link's default navigation when the element is an anchor.
+      if (button.tagName.toLowerCase() === "a") {
+        button.href = getWhatsAppUrl(message);
+        button.target = "_blank";
+        button.rel = "noopener noreferrer";
+        return;
+      }
+
+      event.preventDefault();
+
+      window.open(
+        getWhatsAppUrl(message),
+        "_blank",
+        "noopener,noreferrer"
+      );
+    });
+  });
+
+  /* =======================================================
+     12. SMOOTH SCROLL FOR SAME-PAGE ANCHORS
+  ======================================================= */
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      const href = link.getAttribute("href");
+
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      closeMobileMenu();
+    });
+  });
+
+  /* =======================================================
+     13. SAFE INITIAL FILTER
+  ======================================================= */
+
+  filterProperties();
+
+  console.log("UrbanNest Realty script loaded successfully.");
+});
