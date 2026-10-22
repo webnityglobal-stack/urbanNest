@@ -1576,14 +1576,22 @@
 }
 @media (max-width: 768px) {
   .nav-cta {
-    display: inline-flex !important;
+    display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    color: #000 !important;
+    color: #fff !important;
     white-space: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 12px auto !important;
+    width: fit-content !important;
+  }
+
+  .nav-cta:hover {
+    color: #fff !important;
   }
 }
-
   </style>
 </head>
 
