@@ -869,5 +869,13 @@ nav a[href="./lets-talk.html"]:hover {
     white-space: nowrap !important;
   }
 }
-
+@media (max-width: 768px) {
+  .nav-cta {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #000 !important;
+    white-space: nowrap !important;
+  }
+}
 
